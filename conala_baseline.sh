@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+source activate dynet
+
 SDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 WDIR=`pwd`
 
@@ -13,9 +15,9 @@ cd $WDIR/conala-corpus
 
 python $SDIR/preproc/extract_raw_data.py
 
-python $SDIR/preproc/json_to_seq2seq.py conala-train.json.seq2seq conala-train.intent conala-train.snippet
-python $SDIR/preproc/json_to_seq2seq.py conala-test.json.seq2seq conala-test.intent conala-test.snippet
-python $SDIR/preproc/json_to_seq2seq.py conala-mined.jsonl.seq2seq conala-mined.intent conala-mined.snippet
+python $SDIR/preproc/json_to_seq2seq.py conala-train.json.seq2seq conala-train.snippet conala-train.intent 
+python $SDIR/preproc/json_to_seq2seq.py conala-test.json.seq2seq conala-test.snippet conala-test.intent
+python $SDIR/preproc/json_to_seq2seq.py conala-mined.jsonl.seq2seq conala-mined.snippet conala-mined.intent
 
 # Split off a 400-line dev set from the training set
 # Also, concatenate the first 100000 lines of mined data
