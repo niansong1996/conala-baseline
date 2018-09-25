@@ -20,7 +20,9 @@ try:
 except:
   from io import StringIO
 
-
+'''
+    join the code pieces with space and newline symbol
+'''
 def detokenize_code(code_tokens):
     newline_pos = [i for i, x in enumerate(code_tokens) if x == '\n']
     newline_pos.append(len(code_tokens))
