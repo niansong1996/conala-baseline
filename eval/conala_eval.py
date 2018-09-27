@@ -10,6 +10,8 @@ import argparse
 
 import bleu_score
 
+# --strip_ref_metadata --input_ref conala-corpus/conala-test.json --input_hyp results/$setting.test.json
+
 # Main function for CodaLab evaluation purposes
 def main():
 

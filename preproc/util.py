@@ -20,7 +20,11 @@ try:
 except:
   from io import StringIO
 
-
+'''
+    join the code pieces with space and newline symbol
+    input: tokenized code
+    output: human readable code
+'''
 def detokenize_code(code_tokens):
     newline_pos = [i for i, x in enumerate(code_tokens) if x == '\n']
     newline_pos.append(len(code_tokens))
@@ -35,7 +39,9 @@ def detokenize_code(code_tokens):
 
     return code
 
-
+'''
+    turn the tab and newline symbol to tokes as well
+'''
 def encode_tokenized_code(code_tokens):
     tokens = []
     for token in code_tokens:
@@ -44,7 +50,9 @@ def encode_tokenized_code(code_tokens):
         elif token == '\n':
             tokens.append('_NEWLINE_')
 
-
+'''
+    deal with identation, newline and tab symbol and transfer them to tokens
+'''
 def get_encoded_code_tokens(code):
     code = code.strip()
     # print(code)
@@ -100,6 +108,9 @@ def tokenize(code):
     return tokens
 
 
+'''
+    recursively compare two ast
+'''
 def compare_ast(node1, node2):
     # Python 3
     # if not isinstance(node1, str) and not isinstance(node1, unicode):
@@ -118,7 +129,9 @@ def compare_ast(node1, node2):
     else:
         return node1 == node2
 
-
+'''
+    transfer back the tokens to code, dealing with indentation, space, tab and newline symbol
+'''
 def encoded_code_tokens_to_code(encoded_tokens, indent=' '):
     decoded_tokens = []
     for i in range(len(encoded_tokens)):
@@ -136,7 +149,9 @@ def encoded_code_tokens_to_code(encoded_tokens, indent=' '):
 
     return code
 
-
+'''
+    return the index of start and end of the query_seq in the sequence
+'''
 def find_sub_sequence(sequence, query_seq):
     for i in range(len(sequence)):
         if sequence[i: len(query_seq) + i] == query_seq:
@@ -144,7 +159,9 @@ def find_sub_sequence(sequence, query_seq):
 
     raise IndexError
 
-
+'''
+    match the old_seq in the seq and replace it with the new_seq, return whether successfully matched
+'''
 def replace_sequence(sequence, old_seq, new_seq):
     matched = False
     for i in range(len(sequence)):

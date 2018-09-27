@@ -16,6 +16,7 @@ if __name__ == '__main__':
     for file_path, file_type in [('conala-train.json', 'annotated'), ('conala-test.json', 'annotated'), ('conala-mined.jsonl', 'mined')]:
         print('extracting {} file {}'.format(file_type, file_path), file=sys.stderr)
 
+        # open the correct file 
         if file_type == 'annotated':
             dataset = json.load(open(file_path))
         elif file_type == 'mined':

@@ -1,1 +1,3 @@
-__pycache__
+_pycache__
+*.zip
+./conala-corpus
