@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 _pycache__
 *.zip
 ./conala-corpus
+=======
+__pycache__
+*.zip
+>>>>>>> 3869a899dcfc24efc74c262ca6afc08b0e2c1146
